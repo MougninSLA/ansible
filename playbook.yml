@@ -1,0 +1,12 @@
+---
+- name: Installation du serveur de developpement
+  hosts: developpement
+  remote_user: ansible
+  sudo: yes
+
+  roles:
+    - user
+    - folders
+    - utils
+    - git
+...

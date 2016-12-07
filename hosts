@@ -1,0 +1,2 @@
+[developpement]
+10.8.102.194 ansible_user=ansible ansible_sudo_pass=ansible

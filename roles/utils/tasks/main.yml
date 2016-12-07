@@ -1,0 +1,23 @@
+---
+- name: Installation de paquets
+  apt: name={{ item }} state=latest
+  with_items:
+    - php5
+    - apache2
+    - clamav
+    - clamassassin
+    - curl
+    - courier-imap
+    - mysql-server
+    - mysql-client
+    - spamassassin
+    - ssh
+    - vim
+    - git
+    - perl
+    - procmail
+    - python3
+    - exim4
+    - greylistd
+    - sa-exim
+...

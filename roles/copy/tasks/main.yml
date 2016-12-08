@@ -3,12 +3,12 @@
 - name: Suppression de /etc/
   file: path='/var/sauvegarde/etc/' state=absent
   register: p
-  when: not p.stat.exists
+  when: p.stat.exists
 
 - name: Suppression de /var/
   file: path='/var/sauvegarde/var/' state=absent
   register: p
-  when: not p.stat.exists
+  when: p.stat.exists
 
 # Sauvegardes des repertoires dans /etc/ et /var/
 - name: Sauvegarde de /etc/
@@ -35,7 +35,7 @@
         - procmailrc
         - procmailrc.old
   register: p
-  when: not p.stat.exists
+  when: p.stat.exists
 
 - name: Sauvegarde de /var/
   command: mv /var/{{ item }} /var/sauvegarde/var/
@@ -48,7 +48,7 @@
         - .gitignore
         - README.md
   register: p
-  when: not p.stat.exists
+  when: p.stat.exists
 
 # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
 - name: Déplacer le contenu de /var/github/etc/ vers /etc/
@@ -69,7 +69,7 @@
         - ssh
         - vim
   register: p
-  when: not p.stat.exists
+  when: p.stat.exists
 
   command: mv /var/github/etc/{{ item }} /etc/
   with_items:
@@ -80,7 +80,7 @@
         - procmailrc
         - procmailrc.old
   register: p
-  when: not p.stat.exists
+  when: p.stat.exists
 
 - name: Déplacer le contenu de /var/github/var/ vers /var/
   command: mv /var/github/var/{{ item }}/ /var/
@@ -91,14 +91,14 @@
         - vmail
         - www
   register: p
-  when: not p.stat.exists
+  when: p.stat.exists
 
   command: mv /var/github/var/{{ item }} /var/
   with_items:
         - .gitignore
         - README.md
   register: p
-  when: not p.stat.exists
+  when: p.stat.exists
 
 # Suppression des repertoires vides
 - name: Suppression de /etc/github/etc/
@@ -106,19 +106,19 @@
     path: '/var/github/etc/'
     state: absent
   register: p
-  when: not p.stat.exists
+  when: p.stat.exists
 
 - name: Suppression de /var/github/var/
   file:
     path: '/var/github/var/'
     state: absent
   register: p
-  when: not p.stat.exists
+  when: p.stat.exists
 
 - name: Suppression de /var/github/
   file:
     path: '/var/github/'
     state: absent
   register: p
-  when: not p.stat.exists
+  when: p.stat.exists
 ...

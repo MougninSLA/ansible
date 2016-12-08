@@ -1,24 +1,26 @@
 ---
 # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
-- name: Déplacer le contenu de /var/github/etc/ vers /etc/
-  command: mv /var/github/etc /etc/
+# - name: Déplacer le contenu de /var/github/etc/ vers /etc/
+#   command: mv /var/github/etc /etc/
 
-- name: Déplacer le contenu de /var/github/var/ vers /var/
-  command: mv /var/github/var /var/
+# - name: Déplacer le contenu de /var/github/var/ vers /var/
+#   command: mv /var/github/var /var/
 
-# Suppression des repertoires vides
-- name: Suppression de /etc/github/etc/
-  file:
-    path: '/var/github/etc/'
-    state: absent
+# # Suppression des repertoires vides
+# - name: Suppression de /etc/github/etc/
+#   file:
+#     path: '/var/github/etc/'
+#     state: absent
 
-- name: Suppression de /var/github/var/
-  file:
-    path: '/var/github/var/'
-    state: absent
+# - name: Suppression de /var/github/var/
+#   file:
+#     path: '/var/github/var/'
+#     state: absent
 
-- name: Suppression de /var/github/
-  file:
-    path: '/var/github/'
-    state: absent
+# - name: Suppression de /var/github/
+#   file:
+#     path: '/var/github/'
+#     state: absent
+
+- command: /etc/ansible/scripts/deplacement.sh
 ...

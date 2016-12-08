@@ -10,12 +10,12 @@
 
 # Suppression des repertoires vides
 - name: Suppression de /etc/github/
-     file:
-        path: '/etc/github/'
-        state: absent
+  file:
+    path: '/etc/github/'
+    state: absent
 
 - name: Suppression de /var/github/
-     file:
-        path: '/var/github/'
-        state: absent
+  file:
+    path: '/var/github/'
+    state: absent
 ...

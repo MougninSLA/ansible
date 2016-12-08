@@ -2,6 +2,7 @@
 - name: Création de dossiers
   file: path=/var/{{ item }} state=directory
   with_items:
+    - sauvegarde
     - quarantaine
     - vmail
     - spamd

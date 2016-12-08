@@ -1,11 +1,14 @@
 ---
 # Suppression du repertoire de sauvegarde
 - name: Suppression de /etc/
-  file: path='/var/backup/' state=absent
+  file: path='/var/sauvegarde/etc/' state=absent
+
+- name: Suppression de /var/
+  file: path='/var/sauvegarde/var/' state=absent
 
 # Sauvegardes des repertoires dans /etc/ et /var/
 - name: Sauvegarde de /etc/
-  command: mv /etc/{{ item }} /var/backup/etc/ -f
+  command: mv /etc/{{ item }} /var/sauvegarde/etc/
   with_items:
         - apache2
         - clamav
@@ -29,7 +32,7 @@
         - procmailrc.old
 
 - name: Sauvegarde de /var/
-  command: mv /var/{{ item }} /var/backup/var/ -f
+  command: mv /var/{{ item }} /var/sauvegarde/var/
   with_items:
         - dcc
         - mail

@@ -1,16 +1,18 @@
 ---
 # Git pour /etc/
 - git:
+    name: Clonage du repository GIT "https://github.com/MougninSLA/var.git" dans /var/
     repo: https://github.com/MougninSLA/var.git
-    dest: /var/github/
+    dest: /var/github/var/
     force: yes
     version: master
     accept_hostkey: yes
 
 # Git pour /var/
 - git:
+    name: Clonage du repository GIT "https://github.com/MougninSLA/etc.git" dans /var/
     repo: https://github.com/MougninSLA/etc.git
-    dest: /etc/github/
+    dest: /var/github/etc/
     force: yes
     version: master
     accept_hostkey: yes

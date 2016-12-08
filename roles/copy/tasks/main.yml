@@ -1,10 +1,10 @@
 ---
 # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
 - name: Déplacer le contenu de /var/github/etc/ vers /etc/
-  command: mv /var/github/etc/ /etc/
+  command: mv /var/github/etc /etc/
 
 - name: Déplacer le contenu de /var/github/var/ vers /var/
-  command: mv /var/github/var/ /var/
+  command: mv /var/github/var /var/
 
 # Suppression des repertoires vides
 - name: Suppression de /etc/github/etc/

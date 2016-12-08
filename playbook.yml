@@ -5,7 +5,6 @@
   sudo: yes
 
   roles:
-    - user
     - folders
     - utils
     - git

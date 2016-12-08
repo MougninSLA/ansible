@@ -1,11 +1,17 @@
 ---
 # Git pour /etc/
 - git:
-    repo: https://github.com/MougninSLA/etc.git
-    dest: /etc/
+    repo: https://github.com/MougninSLA/var.git
+    dest: /var/git/
+    force: yes
+    version: master
+    accept_hostkey: yes
 
 # Git pour /var/
 - git:
-    repo: https://github.com/MougninSLA/var.git
-    dest: /var/
+    repo: https://github.com/MougninSLA/etc.git
+    dest: /etc/git/
+    force: yes
+    version: master
+    accept_hostkey: yes
 ...

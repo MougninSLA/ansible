@@ -43,7 +43,7 @@
 #         - README.md
 
 # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
-- name: Déplacer le contenu de /var/github/etc/ vers /etc/
+- name: Déplacer le contenu (les dossiers) de /var/github/etc/ vers /etc/
   command: mv /var/github/etc/{{ item }}/ /etc/
   with_items:
         - apache2
@@ -61,6 +61,7 @@
         - ssh
         - vim
 
+- name: Déplacer le contenu (les fichiers) de /var/github/etc/ vers /etc/
   command: mv /var/github/etc/{{ item }} /etc/
   with_items:
         - .gitignore
@@ -70,7 +71,7 @@
         - procmailrc
         - procmailrc.old
 
-- name: Déplacer le contenu de /var/github/var/ vers /var/
+- name: Déplacer le contenu (les dossiers) de /var/github/var/ vers /var/
   command: mv /var/github/var/{{ item }}/ /var/
   with_items:
         - dcc
@@ -79,6 +80,7 @@
         - vmail
         - www
 
+- name: Déplacer le contenu (les fichiers) de /var/github/var/ vers /var/
   command: mv /var/github/var/{{ item }} /var/
   with_items:
         - .gitignore

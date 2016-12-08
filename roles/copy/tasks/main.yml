@@ -1,9 +1,13 @@
 ---
 # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
-- name: Déplacer le contenu de /etc/github/ ver /etc
+- name: Déplacer le contenu de /var/github/etc/ vers /etc/
+  become: true
+  become_method: su
   command: mv /var/github/etc/ /etc/
 
-- name: Déplacer le contenu de /var/github/ ver /var
+- name: Déplacer le contenu de /var/github/var/ vers /var/
+  become: true
+  become_method: su
   command: mv /var/github/var/ /var/
 
 # Suppression des repertoires vides

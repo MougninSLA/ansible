@@ -10,115 +10,97 @@
   register: p
   when: p.stat.exists
 
-# Sauvegardes des repertoires dans /etc/ et /var/
-- name: Sauvegarde de /etc/
-  command: mv /etc/{{ item }} /var/sauvegarde/etc/
-  with_items:
-        - apache2
-        - clamav
-        - courier
-        - exim4
-        - greylistd
-        - mysql
-        - perl
-        - python
-        - python2.7
-        - python3.4
-        - python3
-        - spamassassin
-        - ssh
-        - vim
-        - .gitignore
-        - README.md
-        - aliases
-        - aliases.db
-        - procmailrc
-        - procmailrc.old
-  register: p
-  when: p.stat.exists
+# # Sauvegardes des repertoires dans /etc/ et /var/
+# - name: Sauvegarde de /etc/
+#   command: mv /etc/{{ item }} /var/sauvegarde/etc/
+#   with_items:
+#         - apache2
+#         - clamav
+#         - courier
+#         - exim4
+#         - greylistd
+#         - mysql
+#         - perl
+#         - python
+#         - python2.7
+#         - python3.4
+#         - python3
+#         - spamassassin
+#         - ssh
+#         - vim
+#         - .gitignore
+#         - README.md
+#         - aliases
+#         - aliases.db
+#         - procmailrc
+#         - procmailrc.old
 
-- name: Sauvegarde de /var/
-  command: mv /var/{{ item }} /var/sauvegarde/var/
-  with_items:
-        - dcc
-        - mail
-        - spamassassin
-        - vmail
-        - www
-        - .gitignore
-        - README.md
-  register: p
-  when: p.stat.exists
+# - name: Sauvegarde de /var/
+#   command: mv /var/{{ item }} /var/sauvegarde/var/
+#   with_items:
+#         - dcc
+#         - mail
+#         - spamassassin
+#         - vmail
+#         - www
+#         - .gitignore
+#         - README.md
 
-# Déplacer les contenues des dossiers GITHUB dans le bon repertoire
-- name: Déplacer le contenu de /var/github/etc/ vers /etc/
-  command: mv /var/github/etc/{{ item }}/ /etc/
-  with_items:
-        - apache2
-        - clamav
-        - courier
-        - exim4
-        - greylistd
-        - mysql
-        - perl
-        - python
-        - python2.7
-        - python3.4
-        - python3
-        - spamassassin
-        - ssh
-        - vim
-  register: p
-  when: p.stat.exists
+# # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
+# - name: Déplacer le contenu de /var/github/etc/ vers /etc/
+#   command: mv /var/github/etc/{{ item }}/ /etc/
+#   with_items:
+#         - apache2
+#         - clamav
+#         - courier
+#         - exim4
+#         - greylistd
+#         - mysql
+#         - perl
+#         - python
+#         - python2.7
+#         - python3.4
+#         - python3
+#         - spamassassin
+#         - ssh
+#         - vim
 
-  command: mv /var/github/etc/{{ item }} /etc/
-  with_items:
-        - .gitignore
-        - README.md
-        - aliases
-        - aliases.db
-        - procmailrc
-        - procmailrc.old
-  register: p
-  when: p.stat.exists
+#   command: mv /var/github/etc/{{ item }} /etc/
+#   with_items:
+#         - .gitignore
+#         - README.md
+#         - aliases
+#         - aliases.db
+#         - procmailrc
+#         - procmailrc.old
 
-- name: Déplacer le contenu de /var/github/var/ vers /var/
-  command: mv /var/github/var/{{ item }}/ /var/
-  with_items:
-        - dcc
-        - mail
-        - spamassassin
-        - vmail
-        - www
-  register: p
-  when: p.stat.exists
+# - name: Déplacer le contenu de /var/github/var/ vers /var/
+#   command: mv /var/github/var/{{ item }}/ /var/
+#   with_items:
+#         - dcc
+#         - mail
+#         - spamassassin
+#         - vmail
+#         - www
 
-  command: mv /var/github/var/{{ item }} /var/
-  with_items:
-        - .gitignore
-        - README.md
-  register: p
-  when: p.stat.exists
+#   command: mv /var/github/var/{{ item }} /var/
+#   with_items:
+#         - .gitignore
+#         - README.md
 
-# Suppression des repertoires vides
-- name: Suppression de /etc/github/etc/
-  file:
-    path: '/var/github/etc/'
-    state: absent
-  register: p
-  when: p.stat.exists
+# # Suppression des repertoires vides
+# - name: Suppression de /etc/github/etc/
+#   file:
+#     path: '/var/github/etc/'
+#     state: absent
 
-- name: Suppression de /var/github/var/
-  file:
-    path: '/var/github/var/'
-    state: absent
-  register: p
-  when: p.stat.exists
+# - name: Suppression de /var/github/var/
+#   file:
+#     path: '/var/github/var/'
+#     state: absent
 
-- name: Suppression de /var/github/
-  file:
-    path: '/var/github/'
-    state: absent
-  register: p
-  when: p.stat.exists
+# - name: Suppression de /var/github/
+#   file:
+#     path: '/var/github/'
+#     state: absent
 ...

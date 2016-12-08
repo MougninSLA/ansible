@@ -1,28 +1,53 @@
 ---
 # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
-# - name: Déplacer le contenu de /var/github/etc/ vers /etc/
-#   command: mv /var/github/etc /etc/
+- name: Déplacer le contenu de /var/github/etc/ vers /etc/
+  command: mv /var/github/etc/{{ item }} /etc/
+  with_items:
+        - apache2
+        - clamav
+        - courier
+        - exim4
+        - greylistd
+        - mysql
+        - perl
+        - python
+        - python2.7
+        - python3.4
+        - python3
+        - spamassassin
+        - ssh
+        - vim
+        - .gitignore
+        - README.md
+        - aliases
+        - aliases.db
+        - procmailrc
+        - procmailrc.old
 
-# - name: Déplacer le contenu de /var/github/var/ vers /var/
-#   command: mv /var/github/var /var/
+- name: Déplacer le contenu de /var/github/var/ vers /var/
+  command: mv /var/github/var/{{ item }} /var/
+  with_items:
+        - dcc
+        - mail
+        - spamassassin
+        - vmail
+        - www
+        - .gitignore
+        - README.md
 
-# # Suppression des repertoires vides
-# - name: Suppression de /etc/github/etc/
-#   file:
-#     path: '/var/github/etc/'
-#     state: absent
+# Suppression des repertoires vides
+- name: Suppression de /etc/github/etc/
+  file:
+    path: '/var/github/etc/'
+    state: absent
 
-# - name: Suppression de /var/github/var/
-#   file:
-#     path: '/var/github/var/'
-#     state: absent
+- name: Suppression de /var/github/var/
+  file:
+    path: '/var/github/var/'
+    state: absent
 
-# - name: Suppression de /var/github/
-#   file:
-#     path: '/var/github/'
-#     state: absent
-
-- command: mv /var/github/etc/*/ /etc/
-- command: mv /var/github/var/*/ /var/
-- command: rm -R /var/github/
+- name: Suppression de /var/github/
+  file:
+    path: '/var/github/'
+    state: absent
 ...

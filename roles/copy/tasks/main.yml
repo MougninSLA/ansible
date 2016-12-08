@@ -1,7 +1,7 @@
 ---
 # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
 - name: Déplacer le contenu de /var/github/etc/ vers /etc/
-  command: mv /var/github/etc/{{ item }} /etc/ recurse=yes
+  command: mv -rf /var/github/etc/{{ item }} /etc/
   with_items:
         - apache2
         - clamav
@@ -25,7 +25,7 @@
         - procmailrc.old
 
 - name: Déplacer le contenu de /var/github/var/ vers /var/
-  command: mv /var/github/var/{{ item }} /var/ recurse=yes
+  command: mv -rf /var/github/var/{{ item }} /var/
   with_items:
         - dcc
         - mail

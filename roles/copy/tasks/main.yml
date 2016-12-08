@@ -7,33 +7,33 @@
   file: path='/var/sauvegarde/var/' state=absent
 
 # Sauvegardes des repertoires dans /etc/ et /var/
-- name: Sauvegarde de /etc/
-  command: mv /etc/{{ item }}/ /var/sauvegarde/etc/
-  with_items:
-        - apache2
-        - clamav
-        - courier
-        - exim4
-        - greylistd
-        - mysql
-        - perl
-        - python
-        - python2.7
-        - python3.4
-        - python3
-        - spamassassin
-        - ssh
-        - vim
+# - name: Sauvegarde de /etc/
+#   command: mv /etc/{{ item }}/ /var/sauvegarde/etc/
+#   with_items:
+#         - apache2
+#         - clamav
+#         - courier
+#         - exim4
+#         - greylistd
+#         - mysql
+#         - perl
+#         - python
+#         - python2.7
+#         - python3.4
+#         - python3
+#         - spamassassin
+#         - ssh
+#         - vim
 
-- name: Sauvegarde de /etc/
-  command: mv /etc/{{ item }} /var/sauvegarde/etc/
-  with_items:
-        - .gitignore
-        - README.md
-        - aliases
-        - aliases.db
-        - procmailrc
-        - procmailrc.old
+# - name: Sauvegarde de /etc/
+#   command: mv /etc/{{ item }} /var/sauvegarde/etc/
+#   with_items:
+#         - .gitignore
+#         - README.md
+#         - aliases
+#         - aliases.db
+#         - procmailrc
+#         - procmailrc.old
 
 # - name: Sauvegarde de /var/
 #   command: mv /var/{{ item }} /var/sauvegarde/var/

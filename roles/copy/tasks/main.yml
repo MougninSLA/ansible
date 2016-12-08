@@ -2,8 +2,6 @@
 # Suppression du repertoire de sauvegarde
 - name: Suppression de /etc/
   file: path='/var/sauvegarde/etc/' state=absent
-  register: st
-  when: st.stat.exists
 
 # - name: Suppression de /var/
 #   file: path='/var/sauvegarde/var/' state=absent

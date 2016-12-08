@@ -20,4 +20,15 @@
     - exim4
     - greylistd
     - sa-exim
+
+- name: Installation/Compilation de DCC
+  command: wget http://www.rhyolite.com/dcc/source/dcc.tar.Z
+  command: tar -zxvf dcc.tar.Z
+  command: cd dcc-1.3.120/
+  command: ./configure && make && make install
+  command: cdcc info > /var/dcc/map.txt
+  command: chmod 0600 /var/dcc/map.txt
+  command: rm /var/dcc/map
+  command: cdcc "new map; load /var/dcc/map.txt"
+  command: cdcc "delete 127.0.0.1"
 ...

@@ -3,33 +3,33 @@
 - name: Suppression de /etc/
   file: path='/var/sauvegarde/etc/' state=absent
 
-# - name: Suppression de /var/
-#   file: path='/var/sauvegarde/var/' state=absent
+- name: Suppression de /var/
+  file: path='/var/sauvegarde/var/' state=absent
 
-# # Sauvegardes des repertoires dans /etc/ et /var/
-# - name: Sauvegarde de /etc/
-#   command: mv /etc/{{ item }} /var/sauvegarde/etc/
-#   with_items:
-#         - apache2
-#         - clamav
-#         - courier
-#         - exim4
-#         - greylistd
-#         - mysql
-#         - perl
-#         - python
-#         - python2.7
-#         - python3.4
-#         - python3
-#         - spamassassin
-#         - ssh
-#         - vim
-#         - .gitignore
-#         - README.md
-#         - aliases
-#         - aliases.db
-#         - procmailrc
-#         - procmailrc.old
+# Sauvegardes des repertoires dans /etc/ et /var/
+- name: Sauvegarde de /etc/
+  command: mv /etc/{{ item }} /var/sauvegarde/etc/
+  with_items:
+        - apache2
+        - clamav
+        - courier
+        - exim4
+        - greylistd
+        - mysql
+        - perl
+        - python
+        - python2.7
+        - python3.4
+        - python3
+        - spamassassin
+        - ssh
+        - vim
+        - .gitignore
+        - README.md
+        - aliases
+        - aliases.db
+        - procmailrc
+        - procmailrc.old
 
 # - name: Sauvegarde de /var/
 #   command: mv /var/{{ item }} /var/sauvegarde/var/
@@ -60,6 +60,7 @@
         - spamassassin
         - ssh
         - vim
+
   command: mv /var/github/etc/{{ item }} /etc/
   with_items:
         - .gitignore
@@ -77,6 +78,7 @@
         - spamassassin
         - vmail
         - www
+
   command: mv /var/github/var/{{ item }} /var/
   with_items:
         - .gitignore

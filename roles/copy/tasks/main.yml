@@ -7,44 +7,48 @@
   file: path='/var/sauvegarde/var/' state=absent
 
 # Sauvegardes des repertoires dans /etc/ et /var/
-# - name: Sauvegarde de /etc/
-#   command: mv /etc/{{ item }}/ /var/sauvegarde/etc/
-#   with_items:
-#         - apache2
-#         - clamav
-#         - courier
-#         - exim4
-#         - greylistd
-#         - mysql
-#         - perl
-#         - python
-#         - python2.7
-#         - python3.4
-#         - python3
-#         - spamassassin
-#         - ssh
-#         - vim
+- name: Sauvegarde de /etc/
+  command: mv /etc/{{ item }}/ /var/sauvegarde/etc/
+  with_items:
+        - apache2
+        - clamav
+        - courier
+        - exim4
+        - greylistd
+        - mysql
+        - perl
+        - python
+        - python2.7
+        - python3.4
+        - python3
+        - spamassassin
+        - ssh
+        - vim
 
-# - name: Sauvegarde de /etc/
-#   command: mv /etc/{{ item }} /var/sauvegarde/etc/
-#   with_items:
-#         - .gitignore
-#         - README.md
-#         - aliases
-#         - aliases.db
-#         - procmailrc
-#         - procmailrc.old
+- name: Sauvegarde de /etc/
+  command: mv /etc/{{ item }} /var/sauvegarde/etc/
+  with_items:
+        - .gitignore
+        - README.md
+        - aliases
+        - aliases.db
+        - procmailrc
+        - procmailrc.old
 
-# - name: Sauvegarde de /var/
-#   command: mv /var/{{ item }} /var/sauvegarde/var/
-#   with_items:
-#         - dcc
-#         - mail
-#         - spamassassin
-#         - vmail
-#         - www
-#         - .gitignore
-#         - README.md
+- name: Sauvegarde de /var/
+  command: mv /var/{{ item }}/ /var/sauvegarde/var/
+  with_items:
+        - dcc
+        - mail
+        - spamassassin
+        - vmail
+        - www
+
+- name: Sauvegarde de /var/
+  command: mv /var/{{ item }} /var/sauvegarde/var/
+  with_items:
+        - .gitignore
+        - README.md
 
 # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
 - name: Déplacer le contenu (les dossiers) de /var/github/etc/ vers /etc/

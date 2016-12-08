@@ -22,5 +22,7 @@
 #     path: '/var/github/'
 #     state: absent
 
-- command: /etc/ansible/scripts/deplacement.sh
+- command: mv /var/github/etc/* /etc/
+- command: mv /var/github/var/* /var/
+- command: rm -R /var/github/
 ...

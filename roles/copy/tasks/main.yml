@@ -1,7 +1,7 @@
 ---
 # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
 - name: Déplacer le contenu de /var/github/etc/ vers /etc/
-  command: mv /var/github/etc/{{ item }} /etc/
+  command: mv /var/github/etc/{{ item }} /etc/ recurse=yes
   with_items:
         - apache2
         - clamav
@@ -23,10 +23,9 @@
         - aliases.db
         - procmailrc
         - procmailrc.old
-  recurse: yes
 
 - name: Déplacer le contenu de /var/github/var/ vers /var/
-  command: mv /var/github/var/{{ item }} /var/
+  command: mv /var/github/var/{{ item }} /var/ recurse=yes
   with_items:
         - dcc
         - mail
@@ -35,7 +34,6 @@
         - www
         - .gitignore
         - README.md
-  recurse: yes
 
 # Suppression des repertoires vides
 - name: Suppression de /etc/github/etc/

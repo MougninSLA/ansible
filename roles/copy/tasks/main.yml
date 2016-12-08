@@ -8,7 +8,7 @@
 
 # Sauvegardes des repertoires dans /etc/ et /var/
 - name: Sauvegarde de /etc/
-  command: mv /etc/{{ item }} /var/sauvegarde/etc/
+  command: mv /etc/{{ item }}/ /var/sauvegarde/etc/
   with_items:
         - apache2
         - clamav
@@ -24,6 +24,10 @@
         - spamassassin
         - ssh
         - vim
+
+- name: Sauvegarde de /etc/
+  command: mv /etc/{{ item }} /var/sauvegarde/etc/
+  with_items:
         - .gitignore
         - README.md
         - aliases

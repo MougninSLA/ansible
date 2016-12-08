@@ -60,6 +60,8 @@
         - spamassassin
         - ssh
         - vim
+  command: mv /var/github/etc/{{ item }} /etc/
+  with_items:
         - .gitignore
         - README.md
         - aliases
@@ -75,6 +77,8 @@
         - spamassassin
         - vmail
         - www
+  command: mv /var/github/var/{{ item }} /var/
+  with_items:
         - .gitignore
         - README.md
 

@@ -1,7 +1,47 @@
 ---
+# Suppression du repertoire de sauvegarde
+- name: Suppression de /etc/
+  file: path='/var/backup/' state=absent
+
+# Sauvegardes des repertoires dans /etc/ et /var/
+- name: Sauvegarde de /etc/
+  command: mv /etc/{{ item }} /var/backup/etc/ -f
+  with_items:
+        - apache2
+        - clamav
+        - courier
+        - exim4
+        - greylistd
+        - mysql
+        - perl
+        - python
+        - python2.7
+        - python3.4
+        - python3
+        - spamassassin
+        - ssh
+        - vim
+        - .gitignore
+        - README.md
+        - aliases
+        - aliases.db
+        - procmailrc
+        - procmailrc.old
+
+- name: Sauvegarde de /var/
+  command: mv /var/{{ item }} /var/backup/var/ -f
+  with_items:
+        - dcc
+        - mail
+        - spamassassin
+        - vmail
+        - www
+        - .gitignore
+        - README.md
+
 # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
 - name: Déplacer le contenu de /var/github/etc/ vers /etc/
-  command: mv -f /var/github/etc/{{ item }} /etc/
+  command: mv /var/github/etc/{{ item }} /etc/
   with_items:
         - apache2
         - clamav
@@ -25,7 +65,7 @@
         - procmailrc.old
 
 - name: Déplacer le contenu de /var/github/var/ vers /var/
-  command: mv -f /var/github/var/{{ item }} /var/
+  command: mv /var/github/var/{{ item }} /var/
   with_items:
         - dcc
         - mail

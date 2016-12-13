@@ -13,21 +13,21 @@
 - name: Suppression de /var/
   file: path='/var/sauvegarde/var/' state=absent
 
-# # Sauvegardes des repertoires dans /etc/ et /var/
-# - name: Sauvegarde de /etc/
-#   command: mv {{ item }} /var/sauvegarde/etc/
-#   with_items:
-#         - /etc/courier/
-#         - /etc/aliases
-#         - /etc/aliases.db
-#         - /etc/procmailrc
-#         - /etc/procmailrc.old
+# Sauvegardes des repertoires dans /etc/ et /var/
+- name: Sauvegarde de /etc/
+  command: mv {{ item }} /var/sauvegarde/etc/
+  with_items:
+        - /etc/courier/
+        - /etc/aliases
+        - /etc/aliases.db
+        - /etc/procmailrc
+        - /etc/procmailrc.old
 
-# - name: Sauvegarde de /var/
-#   command: mv {{ item }} /var/sauvegarde/var/
-#   with_items:
-#         - /var/mail/
-#         - /var/vmail/
+- name: Sauvegarde de /var/
+  command: mv {{ item }} /var/sauvegarde/var/
+  with_items:
+        - /var/mail/
+        - /var/vmail/
 
 # Déplacer les contenues des dossiers GITHUB dans le bon repertoire
 - name: Déplacer le contenu (les dossiers) de /var/github/etc/ vers /etc/

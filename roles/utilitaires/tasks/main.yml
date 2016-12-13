@@ -12,19 +12,19 @@
     - perl
     - python3
 
-# Clonage du git pour /etc/
-- git:
-    repo: https://github.com/MougninSLA/var.git
-    dest: /var/github/var/
-    force: yes
-    version: master
+# # Clonage du git pour /etc/
+# - git:
+#     repo: https://github.com/MougninSLA/var.git
+#     dest: /var/github/var/
+#     force: yes
+#     version: master
 
-# Clonage du git pour /var/
-- git:
-    repo: https://github.com/MougninSLA/etc.git
-    dest: /var/github/etc/
-    force: yes
-    version: master
+# # Clonage du git pour /var/
+# - git:
+#     repo: https://github.com/MougninSLA/etc.git
+#     dest: /var/github/etc/
+#     force: yes
+#     version: master
 
 #Suppression du fichier de configuration GIT
 - name: Clonages réussis à 100% ... Suppression du fichier de configuration GIT

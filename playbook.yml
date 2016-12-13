@@ -5,8 +5,8 @@
   sudo: yes
 
   roles:
-    - folders
-    - utils
-    - git
-    - copy
+    - utilitaires
+    - mail
+    - spam
+    - web
 ...

@@ -1,9 +1,0 @@
----
-- name: Add
-  user:
-    name={{ user }}
-    password={{ password }}
-    shell=/bin/bash
-    groups=sudo
-    append=yes
-...

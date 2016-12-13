@@ -1,0 +1,10 @@
+---
+- name: Installation des paquets pour l'installation du serveur web
+  apt: name={{ item }} state=latest
+  with_items:
+    - php5
+    - apache2
+    - curl
+    - mysql-server
+    - mysql-client
+...

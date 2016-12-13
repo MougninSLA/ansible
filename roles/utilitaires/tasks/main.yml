@@ -1,0 +1,38 @@
+---
+#Installation des paquets utiles
+- name: apt-get update
+  apt:
+    update_cache: yes
+
+- name: Installation des paquets utiles
+  apt: name={{ item }} state=latest
+  with_items:
+    - git
+    - vim
+    - perl
+    - python3
+
+# Clonage du git pour /etc/
+- git:
+    repo: https://github.com/MougninSLA/var.git
+    dest: /var/github/var/
+    force: yes
+    version: master
+
+# Clonage du git pour /var/
+- git:
+    repo: https://github.com/MougninSLA/etc.git
+    dest: /var/github/etc/
+    force: yes
+    version: master
+
+#Suppression du fichier de configuration GIT
+- name: Clonages réussis à 100% ... Suppression du fichier de configuration GIT
+  file:
+    path: '/var/github/etc/.git'
+    state: absent
+  
+  file:
+    path: '/var/github/var/.git'
+    state: absent
+...

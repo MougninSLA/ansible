@@ -9,7 +9,7 @@
 
 # Copie du fichier : authdaemonrc dans courier-imap
 - name: Configure authdaemonrc
-  template: src=templates/authdaemonrc.j2 dest=/etc/courier/authdaemonrc force=yes
+  template: src=../templates/authdaemonrc.j2 dest=/etc/courier/authdaemonrc force=yes
 
 # Copie du fichier : update-exim4.conf.conf dans courier-imap
 - name: Configure update-exim4.conf.conf

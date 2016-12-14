@@ -5,23 +5,34 @@
   with_items:
     - procmail
     - courier-imap
+    - exim4
+    - sa-exim
 
 # Suppression du repertoire de sauvegarde
 - name: Suppression de /etc/
-  file: path='/var/sauvegarde/etc/' state=absent
+  local_action: stat path=/var/sauvegarde/etc/
+  register: optional_file
+  become: no
+
+- file: path='/var/sauvegarde/etc/' state=absent
+  when: optional_file.stat.exists
 
 - name: Suppression de /var/
-  file: path='/var/sauvegarde/var/' state=absent
+  local_action: stat path=/var/sauvegarde/var/
+  register: optional_file
+  become: no
+
+- file: path='/var/sauvegarde/etc/' state=absent
+  when: optional_file.stat.exists
 
 # Sauvegardes des repertoires dans /etc/ et /var/
 - name: Sauvegarde de /etc/
   command: mv {{ item }} /var/sauvegarde/etc/
   with_items:
         - /etc/courier/
+        - /etc/exim4/
         - /etc/aliases
         - /etc/aliases.db
-        - /etc/procmailrc
-        - /etc/procmailrc.old
 
 - name: Sauvegarde de /var/
   command: mv {{ item }} /var/sauvegarde/var/

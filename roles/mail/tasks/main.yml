@@ -23,13 +23,20 @@
 - file: path='/var/sauvegarde/etc/' state=absent
   when: dossier.stat.exists
 
+- set_fact: file_number={{ file_number | int + 1 }}
+
 # Sauvegardes des repertoires dans /etc/ et /var/
 - name: Sauvegarde de /etc/
   local_action: stat path={{ item }}
-  register: dossier
+  register: dossier{{ file_number }}
+  with_items:
+        - /etc/courier/
+        - /etc/exim4/
+        - /etc/aliases
+        - /etc/aliases.db
 
 - command: mv {{ item }} /var/sauvegarde/etc/
-  when: dossier.stat.exists
+  when: dossier{{ file_number }}.stat.exists
   with_items:
         - /etc/courier/
         - /etc/exim4/

@@ -11,21 +11,30 @@
 # Suppression du repertoire de sauvegarde
 - name: Suppression de /etc/
   local_action: stat path=/var/sauvegarde/etc/
-  register: optional_file
+  register: dossier
 
 - file: path='/var/sauvegarde/etc/' state=absent
-  when: optional_file.stat.exists
+  when: dossier.stat.exists
 
 - name: Suppression de /var/
   local_action: stat path=/var/sauvegarde/var/
-  register: optional_file
+  register: dossier
 
 - file: path='/var/sauvegarde/etc/' state=absent
-  when: optional_file.stat.exists
+  when: dossier.stat.exists
 
 # Sauvegardes des repertoires dans /etc/ et /var/
 - name: Sauvegarde de /etc/
-  command: mv {{ item }} /var/sauvegarde/etc/
+  local_action: stat path={{ item }}
+  register: {{ item }}
+  with_items:
+        - /etc/courier/
+        - /etc/exim4/
+        - /etc/aliases
+        - /etc/aliases.db
+
+- command: mv {{ item }} /var/sauvegarde/etc/
+  when: {{ item }}.stat.exists
   with_items:
         - /etc/courier/
         - /etc/exim4/

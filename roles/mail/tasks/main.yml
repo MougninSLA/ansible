@@ -6,60 +6,12 @@
     - procmail
     - courier-imap
     - exim4
-    - sa-exim
 
-# Suppression du repertoire de sauvegarde
-- name: Suppression de la sauvegarde /etc/
-  local_action: stat path=/var/sauvegarde/etc/
-  register: dossier
+# Copie du fichier : authdaemonrc dans courier-imap
+- name: Configure authdaemonrc
+  template: src=templates/authdaemonrc.j2 dest=/etc/courier/authdaemonrc force=yes
 
-- file: path='/var/sauvegarde/etc/' state=absent
-  when: dossier.stat.exists
-
-- name: Suppression de la sauvegarde /var/
-  local_action: stat path=/var/sauvegarde/var/
-  register: dossier
-
-- file: path='/var/sauvegarde/etc/' state=absent
-  when: dossier.stat.exists
-
-# Sauvegardes des repertoires dans /etc/ et /var/
-- name: Sauvegarde de /etc/
-  local_action: stat path={{ item }}
-  register: dossier
-  with_items:
-        - /etc/courier/
-        - /etc/exim4/
-        - /etc/aliases
-        - /etc/aliases.db
-
-- command: mv {{ item }} /var/sauvegarde/etc/
-  when: dossier{{ file_number }}.stat.exists
-  with_items:
-        - /etc/courier/
-        - /etc/exim4/
-        - /etc/aliases
-        - /etc/aliases.db
-
-- name: Sauvegarde de /var/
-  command: mv {{ item }} /var/sauvegarde/var/
-  with_items:
-        - /var/mail/
-        - /var/vmail/
-
-# Déplacer les contenues des dossiers GITHUB dans le bon repertoire
-- name: Déplacer le contenu (les dossiers) de /var/github/etc/ vers /etc/
-  command: mv {{ item }} /etc/
-  with_items:
-        - /var/github/etc/courier/
-        - /var/github/etc/aliases
-        - /var/github/etc/aliases.db
-        - /var/github/etc/procmailrc
-        - /var/github/etc/procmailrc.old
-
-- name: Déplacer le contenu (les dossiers) de /var/github/var/ vers /var/
-  command: mv {{ item }} /var/
-  with_items:
-        - /var/github/var/mail/
-        - /var/github/var/vmail/
+# Copie du fichier : update-exim4.conf.conf dans courier-imap
+- name: Configure update-exim4.conf.conf
+  template: src=templates/update-exim4.conf.conf.j2 dest=/etc/exim4/update-exim4.conf.conf force=yes
 ...

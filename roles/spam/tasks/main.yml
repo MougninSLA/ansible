@@ -6,6 +6,7 @@
     - clamav
     - clamassassin
     - greylistd
+    - sa_exim
 
 - name: Installation/Compilation de DCC
   command: cd /usr/src

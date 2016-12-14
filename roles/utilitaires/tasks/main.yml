@@ -11,6 +11,7 @@
     - vim
     - perl
     - python3
+    - nano
 
 # # Clonage du git pour /etc/
 # - git:
@@ -26,13 +27,13 @@
 #     force: yes
 #     version: master
 
-#Suppression du fichier de configuration GIT
-- name: Clonages réussis à 100% ... Suppression du fichier de configuration GIT
-  file:
-    path: '/var/github/etc/.git'
-    state: absent
+# #Suppression du fichier de configuration GIT
+# - name: Clonages réussis à 100% ... Suppression du fichier de configuration GIT
+#   file:
+#     path: '/var/github/etc/.git'
+#     state: absent
   
-  file:
-    path: '/var/github/var/.git'
-    state: absent
+#   file:
+#     path: '/var/github/var/.git'
+#     state: absent
 ...

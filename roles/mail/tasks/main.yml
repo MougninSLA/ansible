@@ -13,5 +13,5 @@
 
 # Copie du fichier : update-exim4.conf.conf dans courier-imap
 - name: Configure update-exim4.conf.conf
-  template: src=templates/update-exim4.conf.conf.j2 dest=/etc/exim4/update-exim4.conf.conf force=yes
+  template: src=../templates/update-exim4.conf.conf.j2 dest=/etc/exim4/update-exim4.conf.conf force=yes
 ...

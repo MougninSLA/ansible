@@ -1,6 +1,4 @@
 ---
-file_number : 0
-
 # Installation des paquets
 - name: Installation des paquets pour l'installation du serveur mail
   apt: name={{ item }} state=latest
@@ -11,26 +9,24 @@ file_number : 0
     - sa-exim
 
 # Suppression du repertoire de sauvegarde
-- name: Suppression de /etc/
+- name: Suppression de la sauvegarde /etc/
   local_action: stat path=/var/sauvegarde/etc/
   register: dossier
 
 - file: path='/var/sauvegarde/etc/' state=absent
   when: dossier.stat.exists
 
-- name: Suppression de /var/
+- name: Suppression de la sauvegarde /var/
   local_action: stat path=/var/sauvegarde/var/
   register: dossier
 
 - file: path='/var/sauvegarde/etc/' state=absent
   when: dossier.stat.exists
 
-- set_fact: file_number={{ file_number | int + 1 }}
-
 # Sauvegardes des repertoires dans /etc/ et /var/
 - name: Sauvegarde de /etc/
   local_action: stat path={{ item }}
-  register: dossier{{ file_number }}
+  register: dossier
   with_items:
         - /etc/courier/
         - /etc/exim4/

@@ -5,11 +5,10 @@
     - spamassassin
     - clamav
     - clamassassin
-    - exim4
     - greylistd
-    - sa-exim
 
 - name: Installation/Compilation de DCC
+  command: cd /usr/src
   command: wget http://www.rhyolite.com/dcc/source/dcc.tar.Z
   command: tar -zxvf dcc.tar.Z
   command: cd dcc-1.3.120/

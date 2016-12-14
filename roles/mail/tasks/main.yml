@@ -1,4 +1,6 @@
 ---
+file_number : 0
+
 # Installation des paquets
 - name: Installation des paquets pour l'installation du serveur mail
   apt: name={{ item }} state=latest
@@ -23,8 +25,7 @@
 - file: path='/var/sauvegarde/etc/' state=absent
   when: dossier.stat.exists
 
-- file_number : 0
-  set_fact: file_number={{ file_number | int + 1 }}
+- set_fact: file_number={{ file_number | int + 1 }}
 
 # Sauvegardes des repertoires dans /etc/ et /var/
 - name: Sauvegarde de /etc/

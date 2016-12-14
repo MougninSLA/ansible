@@ -27,7 +27,8 @@
 - name: Sauvegarde de /etc/
   local_action: stat path={{ item }}
   register: dossier
-  command: mv {{ item }} /var/sauvegarde/etc/
+
+- command: mv {{ item }} /var/sauvegarde/etc/
   when: dossier.stat.exists
   with_items:
         - /etc/courier/

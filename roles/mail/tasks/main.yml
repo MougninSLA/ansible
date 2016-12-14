@@ -12,7 +12,6 @@
 - name: Suppression de /etc/
   local_action: stat path=/var/sauvegarde/etc/
   register: optional_file
-  become: no
 
 - file: path='/var/sauvegarde/etc/' state=absent
   when: optional_file.stat.exists
@@ -20,7 +19,6 @@
 - name: Suppression de /var/
   local_action: stat path=/var/sauvegarde/var/
   register: optional_file
-  become: no
 
 - file: path='/var/sauvegarde/etc/' state=absent
   when: optional_file.stat.exists

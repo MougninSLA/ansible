@@ -26,7 +26,8 @@
 # Sauvegardes des repertoires dans /etc/ et /var/
 - name: Sauvegarde de /etc/
   local_action: stat path={{ item }}
-  register: "{{ item }}"
+  set_fact: some_variable={{ some_variable | int + 1 }}
+  register: dossier_some_variable
   with_items:
         - /etc/courier/
         - /etc/exim4/
@@ -34,7 +35,7 @@
         - /etc/aliases.db
 
 - command: mv {{ item }} /var/sauvegarde/etc/
-  when: "{{ item }}".stat.exists
+  when: dossier_some_variable.stat.exists
   with_items:
         - /etc/courier/
         - /etc/exim4/

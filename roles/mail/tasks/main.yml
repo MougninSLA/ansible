@@ -6,6 +6,7 @@
     - procmail
     - courier-imap
     - exim4
+    - telnet
 
 # Copie du fichier : authdaemonrc dans courier-imap
 - name: Configure authdaemonrc

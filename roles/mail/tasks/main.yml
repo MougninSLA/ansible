@@ -23,7 +23,8 @@
 - file: path='/var/sauvegarde/etc/' state=absent
   when: dossier.stat.exists
 
-- set_fact: file_number={{ file_number | int + 1 }}
+- file_number : 0
+  set_fact: file_number={{ file_number | int + 1 }}
 
 # Sauvegardes des repertoires dans /etc/ et /var/
 - name: Sauvegarde de /etc/

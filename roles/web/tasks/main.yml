@@ -1,4 +1,9 @@
 ---
+# Installation des paquets
+- name: apt-get update
+  apt:
+    update_cache: yes
+    
 - name: Installation des paquets pour l'installation du serveur web
   apt: name={{ item }} state=latest
   with_items:

@@ -1,4 +1,8 @@
 ---
+- name: apt-get update
+  apt:
+    update_cache: yes
+    
 - name: Installation des paquets pour l'installation du gestionnaire de Spams
   apt: name={{ item }} state=latest
   with_items:
